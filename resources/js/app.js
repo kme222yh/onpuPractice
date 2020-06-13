@@ -7,6 +7,10 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+window.Tone = require('Tone');
+
+const router = require('./router').router;
+const store = require('./store').store;
 
 /**
  * The following block of code may be used to automatically register your
@@ -19,7 +23,13 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('menu-background-component', require('./components/MenuBackgroundComponent.vue').default);
+Vue.component('top-menu-component', require('./components/menu/TopComponent.vue').default);
+Vue.component('app-menu-component', require('./components/menu/AppComponent.vue').default);
+Vue.component('score-component', require('./components/score/ScoreComponent.vue').default);
+Vue.component('opening-component', require('./components/OpeningAnimationComponent.vue').default);
+Vue.component('setting-component', require('./components/SettingComponent.vue').default);
+Vue.component('message-component', require('./components/MessageComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -29,4 +39,6 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
+    router: router,
+    store,
 });
